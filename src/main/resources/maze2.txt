@@ -1,4 +1,7 @@
-#S#######
+curl --request POST \
+  --url http://localhost:8080/api/maze \
+  --header 'Content-Type: text/plain' \
+  --data '#S#######
 #   #   #
 # ### # #
 # #   # #
@@ -6,4 +9,4 @@
 #   # # #
 # ### # #
 #   #   #
-#######E#
+#######E#'
