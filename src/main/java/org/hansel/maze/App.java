@@ -1,8 +1,11 @@
 package org.hansel.maze;
 
 import org.hansel.maze.controller.MazeSolver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.io.FileNotFoundException;
 
@@ -11,11 +14,19 @@ import java.io.FileNotFoundException;
  */
 
 @SpringBootApplication
-public class App {
+@ComponentScan(basePackages = { "org.hansel.maze.*" })
+public class App implements CommandLineRunner {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    @Autowired
+    private MazeSolver mazeSolver;
+
+    public static void main(String[] args) {
         SpringApplication.run(App.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws FileNotFoundException {
         System.out.println("Welcome to King Tut's Tomb!  Follow the path of the asterisks (*) to find your way out!");
-        new MazeSolver().solve(args[0]);
+        mazeSolver.solve(args[0]);
     }
 }

@@ -1,6 +1,7 @@
 package org.hansel.maze.controller;
 
 import org.hansel.maze.model.Maze;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.FileNotFoundException;
@@ -12,8 +13,11 @@ public class MazeSolver {
     private static final String open = " ";
     private String[][] mazeData;
 
+    @Autowired
+    private MazeLoader mazeLoader;
+
     public void solve(String mazeFile) throws FileNotFoundException {
-        Maze maze = new MazeLoader().readFile(mazeFile);
+        Maze maze = mazeLoader.readFile(mazeFile);
         mazeData = maze.getData();
 
         if (solve(maze.getStartingPoint().getX(), maze.getStartingPoint().getY(), maze)) {
