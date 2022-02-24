@@ -12,9 +12,9 @@ import java.util.Scanner;
 @Component
 public class MazeLoader {
 
-    public Maze readFile(String fileName) throws FileNotFoundException {
+    public Maze readFile(String maze) {
         List<String> mazeDoubleArrayList = new ArrayList<>();
-        Scanner sc = new Scanner(new File(fileName));
+        Scanner sc = new Scanner(maze);
         sc.useDelimiter("\n");
         while (sc.hasNext()) {
             mazeDoubleArrayList.add(sc.next());

@@ -30,12 +30,14 @@ public class Maze {
         }
     }
 
-    public void print() {
+    public String print() {
+        StringBuilder sb = new StringBuilder();
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < columns; col++) {
-                System.out.print(data[row][col]);
+                sb.append(data[row][col]);
             }
-            System.out.println();
+            sb.append(System.getProperty("line.separator"));
         }
+        return sb.toString();
     }
 }

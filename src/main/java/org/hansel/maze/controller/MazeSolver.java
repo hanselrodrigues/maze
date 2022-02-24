@@ -16,14 +16,14 @@ public class MazeSolver {
     @Autowired
     private MazeLoader mazeLoader;
 
-    public void solve(String mazeFile) throws FileNotFoundException {
+    public String solve(String mazeFile) {
         Maze maze = mazeLoader.readFile(mazeFile);
         mazeData = maze.getData();
 
         if (solve(maze.getStartingPoint().getX(), maze.getStartingPoint().getY(), maze)) {
-            maze.print();
+            return maze.print();
         } else {
-            System.out.println("Sorry! You're stuck in the tomb!");
+            return "Sorry! You're stuck in the tomb!";
         }
     }
 
