@@ -4,8 +4,6 @@ import org.hansel.maze.model.Maze;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.FileNotFoundException;
-
 @Component
 public class MazeSolver {
 
