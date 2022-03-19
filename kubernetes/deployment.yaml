@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: maze
+  name: maze
+spec:
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      nodePort: 8081
+  selector:
+    app: maze
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: maze
+  name: maze
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: maze
+  strategy: { }
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: maze
+    spec:
+      containers:
+        - name: maze
+          image: docker.io/dockerhansel/maze
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080 # The port that the container is running on in the cluster
